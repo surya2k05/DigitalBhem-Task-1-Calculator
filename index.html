@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body ng-app="Calculator" ng-cloak>
+
+    <div ng-controller="ArthmeticController" class="container">
+
+        <div class="display-container">
+            <p class="casio">Digital Bhem</p>
+            <div class="solar">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <span class="model"><i>task-1</i> Calculator</span>
+            <p class="display">{{ equation }}</p>
+        </div>
+
+        <div class="input-container">
+            <div class="commandNum-container">
+                <div class="command-container">
+                    <button ng-click="command('Off')">OFF</button>
+                    <button ng-repeat="i in ['%','DEL']" ng-click="command(i)" ng-disabled="isOff">{{ i }}</button>
+                </div>
+
+                <div class="number-container calc-container">
+                    <button ng-repeat="i in [7,8,9]" ng-click="updateCurrNum(i)" ng-disabled="isOff">{{ i }}</button></br>
+                    <button ng-repeat="i in [4,5,6]" ng-click="updateCurrNum(i)" ng-disabled="isOff">{{ i }}</button></br>
+                    <button ng-repeat="i in [3,2,1]" ng-click="updateCurrNum(i)" ng-disabled="isOff">{{ i }}</button></br>
+                    <button class="zero" ng-click="updateCurrNum(0)" ng-disabled="isOff">0</button>
+                    <button ng-click="addDecimal()" ng-disabled="isFloat || isOff">.</button>
+                    <button ng-click="calculate()" ng-disabled="isOff">=</button>
+                </div>
+            </div>
+
+            <div class="operator-container calc-container">
+                <span ng-repeat="i in ['AC', '+','-','*','/']" ng-disabled="isOff" ng-click="concatOperator(i)">
+                    <button>{{ i }}</button>
+                </span>
+            </div>
+        </div>
+
+    </div>
+<div class="write">
+    <p>
+        &copy Developed & Designed by <i>Suryakant</i>.
+    </p>
+</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
